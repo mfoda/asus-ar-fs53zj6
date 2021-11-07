@@ -36,13 +36,12 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
-                <a-entity
+                <a-entity model-handler
                     id="animated-model"
                     scale="7.6855478720007495 7.6855478720007495 7.6855478720007495"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     class="clickable"
-                    gesture-handler
                 ></a-entity>
             </a-marker>
 
@@ -50,7 +49,7 @@
         </a-scene>
         <script>
                         window.onload = (event) => {
-AFRAME.registerComponent('gesture-handler', {
+AFRAME.registerComponent('model-handler', {
 
     init: function() {
         const animatedMarker = document.querySelector("#animated-marker");
