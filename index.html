@@ -6,7 +6,7 @@
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.min.js" integrity="sha512-HmaXasRYOQJEXJWYwYCMcIA/XnPtW9WPvaBVWE2mQP6K31sRdcgaYUyB//P5540J4hFqMBcj6vkDEEGkwHkYdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--         <script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.min.js" integrity="sha512-HmaXasRYOQJEXJWYwYCMcIA/XnPtW9WPvaBVWE2mQP6K31sRdcgaYUyB//P5540J4hFqMBcj6vkDEEGkwHkYdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
         <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     </head>
 
@@ -58,15 +58,24 @@
             <a-entity camera></a-entity>
         </a-scene>
         <script>
+            var markerVisible = false;
             window.onload = (event) => {
                 var myElement = document.getElementById('scene');
                 var mc = new Hammer.Manager(myElement);
                 mc.add( new Hammer.Tap({ event: 'singletap' }) );
                 mc.on("singletap", function(ev) {
+                    if (!markerVisible) return;
                     location.href = "https://recruit.asus.com";
                     var el = document.getElementById("animated-model");
                     el.setAttribute("visible",false);
                 });
+                document.querySelector("a-marker").addEventListener("markerFound", (e)=>{
+                    markerVisible = true;
+                });
+                document.querySelector("a-marker").addEventListener("markerLost", (e)=>{
+                    markerVisible = false;
+                });
+})
             };
         </script>
     </body>
