@@ -9,7 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.min.js" integrity="sha512-HmaXasRYOQJEXJWYwYCMcIA/XnPtW9WPvaBVWE2mQP6K31sRdcgaYUyB//P5540J4hFqMBcj6vkDEEGkwHkYdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
 
-    <body style="margin: 0; overflow: hidden;">
+    <body style="margin: 0; overflow: hidden;" id="body">
         <a-scene           
             cursor="fuse: false; rayOrigin: mouse"
             raycaster="objects: .clickable"
@@ -59,10 +59,9 @@
         <script>
                         window.onload = (event) => {
                             console.log("window.onload called");
-                            var ZingTouch = require('ZingTouch');
            var containerElement = document.getElementById('body');
             var activeRegion = ZingTouch.Region(document.body);
-            var childElement = document.getElementById('animated-model');
+            var childElement = document.getElementById('body');
              activeRegion.bind(childElement, 'tap', function(event){ 
                 location.href = "https://recruit.asus.com";
                  console.log("activeRegion.tap called");
