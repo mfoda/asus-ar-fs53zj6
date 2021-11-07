@@ -59,12 +59,12 @@
         </a-scene>
         <script>
             window.onload = (event) => {
-                var myElement = document.getElementById('body');
+                var myElement = document.getElementById('animated-model');
                 var mc = new Hammer.Manager(myElement);
                 mc.add( new Hammer.Tap({ event: 'singletap' }) );
                 mc.on("singletap", function(ev) {
                     location.href = "https://recruit.asus.com";
-                    var el = document.querySelector("#animated-model");
+                    var el = document.getElementById("animated-model");
                     el.setAttribute("visible",false);
                 });
             };
