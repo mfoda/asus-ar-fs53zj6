@@ -59,7 +59,7 @@
         </a-scene>
         <script>
             window.onload = (event) => {
-                var myElement = document.getElementById('animated-model');
+                var myElement = document.getElementById('scene');
                 var mc = new Hammer.Manager(myElement);
                 mc.add( new Hammer.Tap({ event: 'singletap' }) );
                 mc.on("singletap", function(ev) {
