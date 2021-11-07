@@ -59,6 +59,7 @@
         <script>
                         window.onload = (event) => {
                             console.log("window.onload called");
+                            var ZingTouch = require('ZingTouch');
            var containerElement = document.getElementById('body');
             var activeRegion = ZingTouch.Region(document.body);
             var childElement = document.getElementById('animated-model');
