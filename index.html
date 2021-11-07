@@ -36,8 +36,8 @@
                 raycaster="objects: .clickable"
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
+                      click-listener-component
             >
-                 <a-box click-listener-component></a-box>
                 <a-entity entityhandler
                     id="animated-model"
                     scale="7.6855478720007495 7.6855478720007495 7.6855478720007495"
@@ -48,6 +48,7 @@
                     gltf-model="#animated-asset"
                     class="clickable"
                     gesture-handler
+                          click-listener-component
                 ></a-entity>
             </a-marker>
 
