@@ -60,7 +60,7 @@
         <script>
             var markerVisible = false;
             window.onload = (event) => {
-                var myElement = document.getElementById('body');
+                var myElement = document.getElementById('animated-model');
                 var mc = new Hammer.Manager(myElement);
                 mc.add( new Hammer.Tap({ event: 'singletap' }) );
                 mc.on("singletap", function(ev) {
@@ -75,7 +75,6 @@
                 document.querySelector("a-marker").addEventListener("markerLost", (e)=>{
                     markerVisible = false;
                 });
-})
             };
         </script>
     </body>
