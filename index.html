@@ -10,6 +10,7 @@
 
     <body style="margin: 0; overflow: hidden;">
         <a-scene
+            device-orientation-permission-ui="enabled: false;"
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
@@ -25,7 +26,7 @@
                 ></a-asset-item>
             </a-assets>
 
-            <a-marker
+            <a-marker markerhandler
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
@@ -36,7 +37,7 @@
                 id="markerA"
             >
                 <a-entity
-                    id="bowser-model"
+                    id="animated-model"
                     scale="7.6855478720007495 7.6855478720007495 7.6855478720007495"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
@@ -47,5 +48,23 @@
 
             <a-entity camera></a-entity>
         </a-scene>
+                        window.onload = (event) => {
+AFRAME.registerComponent('markerhandler', {
+
+    init: function() {
+        const animatedMarker = document.querySelector("#animated-marker");
+        const aEntity = document.querySelector("#animated-model");
+
+        // every click, we make our model grow in size :)
+        animatedMarker.addEventListener('click', function(ev, target){
+            location.href = "https://recruit.asus.com";
+            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+            if (aEntity && intersectedElement === aEntity) {
+                const scale = aEntity.getAttribute('scale');
+                Object.keys(scale).forEach((key) => scale[key] = scale[key] + 10);
+                aEntity.setAttribute('scale', scale);
+            }
+        });
+}});
     </body>
 </html>
