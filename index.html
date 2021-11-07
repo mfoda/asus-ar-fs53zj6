@@ -7,6 +7,7 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zingtouch/1.0.6/zingtouch.min.js" integrity="sha512-HmaXasRYOQJEXJWYwYCMcIA/XnPtW9WPvaBVWE2mQP6K31sRdcgaYUyB//P5540J4hFqMBcj6vkDEEGkwHkYdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;" id="body">
@@ -58,14 +59,23 @@
         </a-scene>
         <script>
                         window.onload = (event) => {
-                            console.log("window.onload called");
-           var containerElement = document.getElementById('body');
-            var activeRegion = ZingTouch.Region(document.body);
-            var childElement = document.getElementById('body');
-             activeRegion.bind(childElement, 'tap', function(event){ 
-                location.href = "https://recruit.asus.com";
-                 console.log("activeRegion.tap called");
-             }, false);
+                            var myElement = document.getElementById('body');
+        var mc = new Hammer.Manager(myElement);
+                            mc.add( new Hammer.Tap({ event: 'singletap' }) );
+                            mc.on("singletap", function(ev) {
+    location.href = "https://recruit.asus.com";
+});
+
+	console.log(ev);
+});
+//                             console.log("window.onload called");
+//            var containerElement = document.getElementById('body');
+//             var activeRegion = ZingTouch.Region(document.body);
+//             var childElement = document.getElementById('body');
+//              activeRegion.bind(childElement, 'tap', function(event){ 
+//                 location.href = "https://recruit.asus.com";
+//                  console.log("activeRegion.tap called");
+//              }, false);
                       
 AFRAME.registerComponent("markerhandler", {
   init: function () {
