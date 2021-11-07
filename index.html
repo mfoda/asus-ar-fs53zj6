@@ -55,7 +55,7 @@ AFRAME.registerComponent('markerhandler', {
         const aEntity = document.querySelector("#animated-model");
         console.log("REACHED HERE!");
         // every click, we make our model grow in size :)
-        aEntity.addEventListener('click', function(ev, target){
+        animatedMarker.addEventListener('click', function(ev, target){
             location.href = "https://recruit.asus.com";
             const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
             if (aEntity && intersectedElement === aEntity) {
