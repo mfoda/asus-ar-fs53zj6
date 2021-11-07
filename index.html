@@ -58,43 +58,16 @@
             <a-entity camera></a-entity>
         </a-scene>
         <script>
-                        window.onload = (event) => {
-                            var myElement = document.getElementById('body');
-        var mc = new Hammer.Manager(myElement);
-                            mc.add( new Hammer.Tap({ event: 'singletap' }) );
-                            mc.on("singletap", function(ev) {
-    location.href = "https://recruit.asus.com";
-});
-//                             console.log("window.onload called");
-//            var containerElement = document.getElementById('body');
-//             var activeRegion = ZingTouch.Region(document.body);
-//             var childElement = document.getElementById('body');
-//              activeRegion.bind(childElement, 'tap', function(event){ 
-//                 location.href = "https://recruit.asus.com";
-//                  console.log("activeRegion.tap called");
-//              }, false);
-                      
-AFRAME.registerComponent("markerhandler", {
-  init: function () {
-  this.el.sceneEl.addEventListener("click", (e) => {
-     location.href = "https://recruit.asus.com";
-    });
-  }});
-    AFRAME.registerComponent("entityhandler", {
-  init: function () {
-  this.el.sceneEl.addEventListener("click", (e) => {
-     location.href = "https://recruit.asus.com";
-    });
-  }});
-AFRAME.registerComponent("scene", {
-  init: function() {
-    this.el.addEventListener("click", e => {
-       location.href = "https://recruit.asus.com";
-      alert("Box clicked!");
-    });
-  }});
-
-                        };
+            window.onload = (event) => {
+                var myElement = document.getElementById('body');
+                var mc = new Hammer.Manager(myElement);
+                mc.add( new Hammer.Tap({ event: 'singletap' }) );
+                mc.on("singletap", function(ev) {
+                    location.href = "https://recruit.asus.com";
+                    var el = document.querySelector("#animated-model");
+                    el.setAttribute("visible",false);
+                });
+            };
         </script>
     </body>
 </html>
